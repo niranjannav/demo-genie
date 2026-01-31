@@ -3,6 +3,8 @@
 import { Clock, Download, Film } from 'lucide-react'
 import { useAppStore } from '@/lib/store'
 import SceneCard from './SceneCard'
+import RenderButton from './RenderButton'
+import VideoPlayer from './VideoPlayer'
 
 export default function StoryboardView() {
   const { storyboard } = useAppStore()
@@ -49,13 +51,16 @@ export default function StoryboardView() {
             </p>
           )}
         </div>
-        <button
-          onClick={handleExportJson}
-          className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
-        >
-          <Download className="w-4 h-4" />
-          Export JSON
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleExportJson}
+            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+          >
+            <Download className="w-4 h-4" />
+            Export JSON
+          </button>
+          <RenderButton />
+        </div>
       </div>
 
       {/* Scene Grid */}
@@ -64,6 +69,9 @@ export default function StoryboardView() {
           <SceneCard key={scene.scene_number} scene={scene} />
         ))}
       </div>
+
+      {/* Video Player (shown when render is complete) */}
+      <VideoPlayer />
     </div>
   )
 }

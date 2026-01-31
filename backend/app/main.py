@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from app.api.routes import upload, process, generate
+from app.api.routes import upload, process, generate, render
 from app.config import settings
 from app.logging_config import logger
 
@@ -47,6 +47,7 @@ async def startup_event():
 app.include_router(upload.router, prefix="/api", tags=["upload"])
 app.include_router(process.router, prefix="/api", tags=["process"])
 app.include_router(generate.router, prefix="/api", tags=["generate"])
+app.include_router(render.router, prefix="/api", tags=["render"])
 
 
 @app.get("/health")

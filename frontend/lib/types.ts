@@ -60,3 +60,39 @@ export interface FileInfo {
   processed: boolean
   chunks_count?: number
 }
+
+// Render types
+export type RenderStatus =
+  | 'pending'
+  | 'generating_images'
+  | 'generating_audio'
+  | 'rendering_video'
+  | 'completed'
+  | 'failed'
+
+export interface SceneAsset {
+  scene_number: number
+  image_path?: string | null
+  audio_path?: string | null
+  audio_duration_ms?: number | null
+}
+
+export interface RenderProgress {
+  phase: string
+  images_completed: number
+  images_total: number
+  audio_completed: number
+  audio_total: number
+  video_progress: number
+}
+
+export interface RenderResponse {
+  render_id: string
+  status: RenderStatus
+  progress: number
+  message: string
+  video_url?: string | null
+  scene_assets?: SceneAsset[] | null
+  detailed_progress?: RenderProgress | null
+  error?: string | null
+}

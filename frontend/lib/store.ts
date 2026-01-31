@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { Storyboard, VideoStyle } from './types'
+import type { Storyboard, VideoStyle, RenderStatus, RenderProgress } from './types'
 
 interface UploadedFile {
   file: File
@@ -23,6 +23,15 @@ interface AppState {
   isGenerating: boolean
   generateError: string | null
 
+  // Render state
+  renderId: string | null
+  renderStatus: RenderStatus | null
+  renderProgress: number
+  renderDetailedProgress: RenderProgress | null
+  videoUrl: string | null
+  isRendering: boolean
+  renderError: string | null
+
   // Actions
   setUploadedFile: (file: File, fileId: string) => void
   setFileProcessed: (chunksCount: number) => void
@@ -33,6 +42,15 @@ interface AppState {
   setStoryboard: (storyboard: Storyboard) => void
   setGenerating: (isGenerating: boolean) => void
   setGenerateError: (error: string | null) => void
+  startRender: (renderId: string) => void
+  updateRenderStatus: (
+    status: RenderStatus,
+    progress: number,
+    videoUrl?: string | null,
+    detailedProgress?: RenderProgress | null
+  ) => void
+  setRenderError: (error: string) => void
+  resetRender: () => void
   reset: () => void
 }
 
@@ -45,6 +63,24 @@ const initialState = {
   storyboard: null,
   isGenerating: false,
   generateError: null,
+  // Render state
+  renderId: null,
+  renderStatus: null,
+  renderProgress: 0,
+  renderDetailedProgress: null,
+  videoUrl: null,
+  isRendering: false,
+  renderError: null,
+}
+
+const initialRenderState = {
+  renderId: null,
+  renderStatus: null,
+  renderProgress: 0,
+  renderDetailedProgress: null,
+  videoUrl: null,
+  isRendering: false,
+  renderError: null,
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -84,6 +120,35 @@ export const useAppStore = create<AppState>((set) => ({
 
   setGenerateError: (generateError) =>
     set({ generateError, isGenerating: false }),
+
+  startRender: (renderId) =>
+    set({
+      renderId,
+      renderStatus: 'pending',
+      renderProgress: 0,
+      renderDetailedProgress: null,
+      videoUrl: null,
+      isRendering: true,
+      renderError: null,
+    }),
+
+  updateRenderStatus: (status, progress, videoUrl, detailedProgress) =>
+    set({
+      renderStatus: status,
+      renderProgress: progress,
+      videoUrl: videoUrl ?? null,
+      renderDetailedProgress: detailedProgress ?? null,
+      isRendering: status !== 'completed' && status !== 'failed',
+    }),
+
+  setRenderError: (error) =>
+    set({
+      renderStatus: 'failed',
+      renderError: error,
+      isRendering: false,
+    }),
+
+  resetRender: () => set(initialRenderState),
 
   reset: () => set(initialState),
 }))
