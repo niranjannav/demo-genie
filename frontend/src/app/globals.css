@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/* ============================================
+   NeuroReel Design Language
+   A creative, marketer-friendly design system
+   ============================================ */
+
+:root {
+  /* Primary brand colors - vibrant creative palette */
+  --neuro-primary: #6366f1;           /* Indigo - creativity & innovation */
+  --neuro-primary-light: #818cf8;
+  --neuro-primary-dark: #4f46e5;
+  
+  /* Secondary accent - energetic coral */
+  --neuro-accent: #f97316;            /* Orange - energy & action */
+  --neuro-accent-light: #fb923c;
+  --neuro-accent-dark: #ea580c;
+  
+  /* Tertiary - fresh teal for highlights */
+  --neuro-teal: #14b8a6;
+  --neuro-teal-light: #2dd4bf;
+  --neuro-teal-dark: #0d9488;
+  
+  /* Gradients for creative appeal */
+  --neuro-gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+  --neuro-gradient-accent: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
+  --neuro-gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
+  --neuro-gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+  
+  /* Neutrals - refined dark palette */
+  --neuro-bg-dark: #0f172a;           /* Slate 900 */
+  --neuro-bg-darker: #020617;         /* Slate 950 */
+  --neuro-surface: #1e293b;           /* Slate 800 */
+  --neuro-surface-light: #334155;     /* Slate 700 */
+  --neuro-border: rgba(148, 163, 184, 0.15);
+  
+  /* Text colors */
+  --neuro-text-primary: #f8fafc;      /* Slate 50 */
+  --neuro-text-secondary: #94a3b8;    /* Slate 400 */
+  --neuro-text-muted: #64748b;        /* Slate 500 */
+  
+  /* Scene card colors for storyboard */
+  --scene-1: #6366f1;                 /* Indigo */
+  --scene-2: #8b5cf6;                 /* Violet */
+  --scene-3: #a855f7;                 /* Purple */
+  --scene-4: #d946ef;                 /* Fuchsia */
+  --scene-5: #ec4899;                 /* Pink */
+  --scene-6: #f43f5e;                 /* Rose */
+  
+  /* Shadows for depth */
+  --neuro-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --neuro-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --neuro-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --neuro-shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+  
+  /* Animation timings */
+  --neuro-transition-fast: 150ms ease;
+  --neuro-transition-normal: 250ms ease;
+  --neuro-transition-slow: 400ms ease-out;
+  
+  /* Spacing rhythm */
+  --neuro-space-scene: clamp(60px, 10vh, 100px);
+}
+
+@theme inline {
+  --color-background: var(--neuro-bg-dark);
+  --color-foreground: var(--neuro-text-primary);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--neuro-bg-dark);
+  color: var(--neuro-text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for creative feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neuro-bg-darker);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neuro-primary) 0%, var(--neuro-accent) 100%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--neuro-primary-light) 0%, var(--neuro-accent-light) 100%);
+}
+
+/* Utility classes for design language */
+.gradient-text {
+  background: var(--neuro-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-accent {
+  background: var(--neuro-gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-effect {
+  box-shadow: var(--neuro-shadow-glow);
+}
+
+.glass-surface {
+  background: rgba(30, 41, 59, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--neuro-border);
+}
+
+/* Animation keyframes for scroll-based storyboard */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+  }
+}
+
+@keyframes timeline-progress {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s var(--neuro-transition-slow) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s var(--neuro-transition-slow) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s var(--neuro-transition-slow) forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Storyboard timeline connector */
+.timeline-connector {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--neuro-primary) 0%, var(--neuro-accent) 50%, var(--neuro-teal) 100%);
+  transform: translateX(-50%);
+  opacity: 0.3;
+}
+
+/* Scene card hover effects */
+.scene-card {
+  transition: all var(--neuro-transition-normal);
+}
+
+.scene-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--neuro-shadow-lg), var(--neuro-shadow-glow);
+}
