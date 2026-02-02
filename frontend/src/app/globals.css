@@ -2,56 +2,49 @@
 
 /* ============================================
    NeuroReel Design Language
-   A creative, marketer-friendly design system
+   Minimalistic egg-shell white with shadows & depth
    ============================================ */
 
 :root {
-  /* Primary brand colors - vibrant creative palette */
-  --neuro-primary: #6366f1;           /* Indigo - creativity & innovation */
-  --neuro-primary-light: #818cf8;
-  --neuro-primary-dark: #4f46e5;
+  /* Background - egg-shell white palette */
+  --neuro-bg: #FAF9F6;                /* Egg-shell white */
+  --neuro-bg-warm: #F5F5F0;           /* Slightly warmer white */
+  --neuro-bg-alt: #EFEDE8;            /* Alternative surface */
+  --neuro-surface: #FFFFFF;           /* Pure white for cards */
   
-  /* Secondary accent - energetic coral */
-  --neuro-accent: #f97316;            /* Orange - energy & action */
-  --neuro-accent-light: #fb923c;
-  --neuro-accent-dark: #ea580c;
+  /* Lines & borders - greyish-black thin lines */
+  --neuro-line: #2D2D2D;              /* Primary line color */
+  --neuro-line-light: #E5E4E0;        /* Light divider lines */
+  --neuro-line-medium: #C4C3BF;       /* Medium weight lines */
+  --neuro-border: 1px solid #E5E4E0;
+  --neuro-border-dark: 1px solid #2D2D2D;
   
-  /* Tertiary - fresh teal for highlights */
-  --neuro-teal: #14b8a6;
-  --neuro-teal-light: #2dd4bf;
-  --neuro-teal-dark: #0d9488;
+  /* Text colors - greyish-black */
+  --neuro-text-primary: #1A1A1A;      /* Primary text - near black */
+  --neuro-text-secondary: #4A4A4A;    /* Secondary text */
+  --neuro-text-muted: #7A7A7A;        /* Muted/subtle text */
+  --neuro-text-light: #9A9A9A;        /* Light text */
   
-  /* Gradients for creative appeal */
-  --neuro-gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-  --neuro-gradient-accent: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
-  --neuro-gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%);
-  --neuro-gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.05) 100%);
+  /* Call-out colors based on context */
+  --neuro-amber: #D97706;             /* Amber - warnings, attention */
+  --neuro-amber-light: #FBBF24;
+  --neuro-amber-bg: #FEF3C7;
   
-  /* Neutrals - refined dark palette */
-  --neuro-bg-dark: #0f172a;           /* Slate 900 */
-  --neuro-bg-darker: #020617;         /* Slate 950 */
-  --neuro-surface: #1e293b;           /* Slate 800 */
-  --neuro-surface-light: #334155;     /* Slate 700 */
-  --neuro-border: rgba(148, 163, 184, 0.15);
+  --neuro-red: #DC2626;               /* Red - errors, critical */
+  --neuro-red-light: #F87171;
+  --neuro-red-bg: #FEE2E2;
   
-  /* Text colors */
-  --neuro-text-primary: #f8fafc;      /* Slate 50 */
-  --neuro-text-secondary: #94a3b8;    /* Slate 400 */
-  --neuro-text-muted: #64748b;        /* Slate 500 */
+  --neuro-green: #4A5D4A;             /* Baggy green - success, positive */
+  --neuro-green-light: #6B7F6B;
+  --neuro-green-bg: #E8EDE8;
   
-  /* Scene card colors for storyboard */
-  --scene-1: #6366f1;                 /* Indigo */
-  --scene-2: #8b5cf6;                 /* Violet */
-  --scene-3: #a855f7;                 /* Purple */
-  --scene-4: #d946ef;                 /* Fuchsia */
-  --scene-5: #ec4899;                 /* Pink */
-  --scene-6: #f43f5e;                 /* Rose */
-  
-  /* Shadows for depth */
-  --neuro-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --neuro-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  --neuro-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-  --neuro-shadow-glow: 0 0 40px rgba(99, 102, 241, 0.3);
+  /* Shadows for depth - key design element */
+  --neuro-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --neuro-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --neuro-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --neuro-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
+  --neuro-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+  --neuro-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.04);
   
   /* Animation timings */
   --neuro-transition-fast: 150ms ease;
@@ -63,7 +56,7 @@
 }
 
 @theme inline {
-  --color-background: var(--neuro-bg-dark);
+  --color-background: var(--neuro-bg);
   --color-foreground: var(--neuro-text-primary);
 }
 
@@ -73,61 +66,92 @@ html {
 }
 
 body {
-  background: var(--neuro-bg-dark);
+  background: var(--neuro-bg);
   color: var(--neuro-text-primary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Custom scrollbar for creative feel */
+/* Custom scrollbar - minimal style */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--neuro-bg-darker);
+  background: var(--neuro-bg-warm);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--neuro-primary) 0%, var(--neuro-accent) 100%);
-  border-radius: 4px;
+  background: var(--neuro-line-medium);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--neuro-primary-light) 0%, var(--neuro-accent-light) 100%);
+  background: var(--neuro-line);
 }
 
 /* Utility classes for design language */
-.gradient-text {
-  background: var(--neuro-gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.text-accent-amber {
+  color: var(--neuro-amber);
 }
 
-.gradient-text-accent {
-  background: var(--neuro-gradient-accent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.text-accent-red {
+  color: var(--neuro-red);
 }
 
-.glow-effect {
-  box-shadow: var(--neuro-shadow-glow);
+.text-accent-green {
+  color: var(--neuro-green);
 }
 
-.glass-surface {
-  background: rgba(30, 41, 59, 0.8);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--neuro-border);
+.bg-accent-amber {
+  background-color: var(--neuro-amber-bg);
+  color: var(--neuro-amber);
+}
+
+.bg-accent-red {
+  background-color: var(--neuro-red-bg);
+  color: var(--neuro-red);
+}
+
+.bg-accent-green {
+  background-color: var(--neuro-green-bg);
+  color: var(--neuro-green);
+}
+
+/* Card surface with depth */
+.card-surface {
+  background: var(--neuro-surface);
+  border: var(--neuro-border);
+  box-shadow: var(--neuro-shadow-sm);
+  transition: all var(--neuro-transition-normal);
+}
+
+.card-surface:hover {
+  box-shadow: var(--neuro-shadow-md);
+}
+
+/* Elevated surface for emphasis */
+.card-elevated {
+  background: var(--neuro-surface);
+  border: var(--neuro-border);
+  box-shadow: var(--neuro-shadow-lg);
+}
+
+/* Thin line dividers */
+.line-divider {
+  border-top: 1px solid var(--neuro-line-light);
+}
+
+.line-divider-dark {
+  border-top: 1px solid var(--neuro-line);
 }
 
 /* Animation keyframes for scroll-based storyboard */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -138,7 +162,7 @@ body {
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-50px);
+    transform: translateX(-30px);
   }
   to {
     opacity: 1;
@@ -149,7 +173,7 @@ body {
 @keyframes slideInRight {
   from {
     opacity: 0;
-    transform: translateX(50px);
+    transform: translateX(30px);
   }
   to {
     opacity: 1;
@@ -157,12 +181,12 @@ body {
   }
 }
 
-@keyframes pulse-glow {
+@keyframes subtle-pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+    box-shadow: var(--neuro-shadow-md);
   }
   50% {
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+    box-shadow: var(--neuro-shadow-lg);
   }
 }
 
@@ -176,31 +200,30 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.6s var(--neuro-transition-slow) forwards;
+  animation: fadeInUp 0.5s var(--neuro-transition-slow) forwards;
 }
 
 .animate-slide-in-left {
-  animation: slideInLeft 0.6s var(--neuro-transition-slow) forwards;
+  animation: slideInLeft 0.5s var(--neuro-transition-slow) forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.6s var(--neuro-transition-slow) forwards;
+  animation: slideInRight 0.5s var(--neuro-transition-slow) forwards;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s ease-in-out infinite;
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
 }
 
-/* Storyboard timeline connector */
+/* Storyboard timeline connector - thin line */
 .timeline-connector {
   position: absolute;
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--neuro-primary) 0%, var(--neuro-accent) 50%, var(--neuro-teal) 100%);
+  width: 1px;
+  background: var(--neuro-line);
   transform: translateX(-50%);
-  opacity: 0.3;
 }
 
 /* Scene card hover effects */
@@ -209,6 +232,29 @@ body {
 }
 
 .scene-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--neuro-shadow-lg), var(--neuro-shadow-glow);
+  transform: translateY(-2px);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--neuro-text-primary);
+  color: var(--neuro-surface);
+  box-shadow: var(--neuro-shadow-sm);
+  transition: all var(--neuro-transition-normal);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--neuro-shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--neuro-text-primary);
+  border: 1px solid var(--neuro-line);
+  transition: all var(--neuro-transition-normal);
+}
+
+.btn-secondary:hover {
+  background: var(--neuro-bg-alt);
 }

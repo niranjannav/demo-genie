@@ -11,13 +11,14 @@ interface SceneCardProps {
   isLeft?: boolean;
 }
 
-const sceneColors = [
-  "from-indigo-500 to-violet-500",
-  "from-violet-500 to-purple-500",
-  "from-purple-500 to-fuchsia-500",
-  "from-fuchsia-500 to-pink-500",
-  "from-pink-500 to-rose-500",
-  "from-rose-500 to-orange-500",
+// Scene colors: amber, green, red based on scene context
+const sceneStyles = [
+  { bg: "bg-[#E8EDE8]", text: "text-[#4A5D4A]", border: "border-[#4A5D4A]" }, // Scene 1 - green (hook)
+  { bg: "bg-[#FEF3C7]", text: "text-[#D97706]", border: "border-[#D97706]" }, // Scene 2 - amber (problem)
+  { bg: "bg-[#E8EDE8]", text: "text-[#4A5D4A]", border: "border-[#4A5D4A]" }, // Scene 3 - green (solution)
+  { bg: "bg-[#FEF3C7]", text: "text-[#D97706]", border: "border-[#D97706]" }, // Scene 4 - amber (magic)
+  { bg: "bg-[#E8EDE8]", text: "text-[#4A5D4A]", border: "border-[#4A5D4A]" }, // Scene 5 - green (trust)
+  { bg: "bg-[#FEE2E2]", text: "text-[#DC2626]", border: "border-[#DC2626]" }, // Scene 6 - red (CTA)
 ];
 
 export function SceneCard({
@@ -25,10 +26,9 @@ export function SceneCard({
   title,
   description,
   duration,
-  imageUrl,
   isLeft = true,
 }: SceneCardProps) {
-  const colorClass = sceneColors[(sceneNumber - 1) % sceneColors.length];
+  const style = sceneStyles[(sceneNumber - 1) % sceneStyles.length];
 
   return (
     <div
@@ -39,10 +39,10 @@ export function SceneCard({
       {/* Scene number badge */}
       <div
         className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 
-        w-14 h-14 rounded-full bg-gradient-to-br ${colorClass} 
-        flex items-center justify-center shadow-lg animate-pulse-glow`}
+        w-12 h-12 rounded-full bg-white ${style.border} border-2
+        flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.1)]`}
       >
-        <span className="text-white font-bold text-lg">{sceneNumber}</span>
+        <span className={`${style.text} font-bold text-lg`}>{sceneNumber}</span>
       </div>
 
       {/* Card content */}
@@ -52,14 +52,16 @@ export function SceneCard({
         }`}
       >
         <div
-          className={`glass-surface rounded-2xl p-6 hover:border-indigo-500/30 transition-all duration-300 ${
+          className={`bg-white rounded-2xl p-6 border border-[#E5E4E0] 
+          shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.1)] 
+          transition-all duration-300 ${
             isLeft ? "ml-auto" : "mr-auto"
           } max-w-md`}
         >
           {/* Duration badge */}
           <div
             className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full 
-            bg-gradient-to-r ${colorClass} text-white text-xs font-medium mb-4`}
+            ${style.bg} ${style.text} text-xs font-medium mb-4 border ${style.border}/30`}
           >
             <svg
               className="w-3 h-3"
@@ -75,15 +77,8 @@ export function SceneCard({
             {duration}
           </div>
 
-          <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
-          <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
-
-          {/* Visual hint */}
-          {imageUrl && (
-            <div className="mt-4 rounded-lg overflow-hidden bg-slate-800/50 aspect-video flex items-center justify-center">
-              <div className={`w-full h-full bg-gradient-to-br ${colorClass} opacity-20`} />
-            </div>
-          )}
+          <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">{title}</h3>
+          <p className="text-[#4A4A4A] text-sm leading-relaxed">{description}</p>
         </div>
       </div>
 

@@ -82,16 +82,16 @@ export function StoryboardTimeline() {
   }, []);
 
   return (
-    <section className="relative py-24 px-4" ref={timelineRef}>
+    <section className="relative py-24 px-4 bg-[#FAF9F6]" ref={timelineRef}>
       {/* Section header */}
       <div className="text-center mb-20">
-        <span className="inline-block px-4 py-2 rounded-full bg-indigo-500/10 text-indigo-400 text-sm font-medium mb-4">
+        <span className="inline-block px-4 py-2 rounded-full bg-[#E8EDE8] text-[#4A5D4A] text-sm font-medium mb-4 border border-[#4A5D4A]/20">
           How It Works
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] mb-4 tracking-tight">
           Your Story, Scene by Scene
         </h2>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+        <p className="text-[#4A4A4A] max-w-2xl mx-auto text-lg">
           Every great video follows a narrative arc. Our AI crafts each scene
           to take your audience on a journey.
         </p>
@@ -99,13 +99,13 @@ export function StoryboardTimeline() {
 
       {/* Timeline container */}
       <div className="relative max-w-5xl mx-auto">
-        {/* Animated timeline connector */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2">
+        {/* Animated timeline connector - thin greyish-black line */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2">
           {/* Background line */}
-          <div className="absolute inset-0 bg-slate-700/50" />
+          <div className="absolute inset-0 bg-[#E5E4E0]" />
           {/* Progress line */}
           <div
-            className="absolute top-0 left-0 right-0 bg-gradient-to-b from-indigo-500 via-purple-500 to-orange-500 origin-top transition-transform duration-100"
+            className="absolute top-0 left-0 right-0 bg-[#2D2D2D] origin-top transition-transform duration-100"
             style={{ transform: `scaleY(${scrollProgress})` }}
           />
         </div>
@@ -126,9 +126,9 @@ export function StoryboardTimeline() {
 
         {/* End marker */}
         <div className="relative mt-24 flex justify-center">
-          <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-rose-500 flex items-center justify-center shadow-lg animate-pulse-glow">
+          <div className="w-14 h-14 rounded-full bg-white border-2 border-[#4A5D4A] flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
             <svg
-              className="w-8 h-8 text-white"
+              className="w-7 h-7 text-[#4A5D4A]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
