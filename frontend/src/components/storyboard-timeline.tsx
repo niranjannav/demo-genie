@@ -126,7 +126,7 @@ export function StoryboardTimeline() {
 
         {/* End marker */}
         <div className="relative mt-24 flex justify-center">
-          <div className="w-14 h-14 rounded-full bg-white border-2 border-[#4A5D4A] flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.1)]">
+          <div className="w-14 h-14 rounded-full bg-white border-2 border-[#4A5D4A] flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.1)] animate-subtle-pulse">
             <svg
               className="w-7 h-7 text-[#4A5D4A]"
               fill="none"

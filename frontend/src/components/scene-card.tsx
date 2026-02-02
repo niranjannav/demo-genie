@@ -7,7 +7,6 @@ interface SceneCardProps {
   title: string;
   description: string;
   duration: string;
-  imageUrl?: string;
   isLeft?: boolean;
 }
 
