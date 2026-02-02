@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+/* ============================================
+   NeuroReel Design Language
+   Minimalistic egg-shell white with shadows & depth
+   ============================================ */
+
+:root {
+  /* Background - egg-shell white palette */
+  --neuro-bg: #FAF9F6;                /* Egg-shell white */
+  --neuro-bg-warm: #F5F5F0;           /* Slightly warmer white */
+  --neuro-bg-alt: #EFEDE8;            /* Alternative surface */
+  --neuro-surface: #FFFFFF;           /* Pure white for cards */
+  
+  /* Lines & borders - greyish-black thin lines */
+  --neuro-line: #2D2D2D;              /* Primary line color */
+  --neuro-line-light: #E5E4E0;        /* Light divider lines */
+  --neuro-line-medium: #C4C3BF;       /* Medium weight lines */
+  --neuro-border: 1px solid #E5E4E0;
+  --neuro-border-dark: 1px solid #2D2D2D;
+  
+  /* Text colors - greyish-black */
+  --neuro-text-primary: #1A1A1A;      /* Primary text - near black */
+  --neuro-text-secondary: #4A4A4A;    /* Secondary text */
+  --neuro-text-muted: #7A7A7A;        /* Muted/subtle text */
+  --neuro-text-light: #9A9A9A;        /* Light text */
+  
+  /* Call-out colors based on context */
+  --neuro-amber: #D97706;             /* Amber - warnings, attention */
+  --neuro-amber-light: #FBBF24;
+  --neuro-amber-bg: #FEF3C7;
+  
+  --neuro-red: #DC2626;               /* Red - errors, critical */
+  --neuro-red-light: #F87171;
+  --neuro-red-bg: #FEE2E2;
+  
+  --neuro-green: #4A5D4A;             /* Baggy green - success, positive */
+  --neuro-green-light: #6B7F6B;
+  --neuro-green-bg: #E8EDE8;
+  
+  /* Shadows for depth - key design element */
+  --neuro-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --neuro-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --neuro-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --neuro-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06);
+  --neuro-shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+  --neuro-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+  
+  /* Animation timings */
+  --neuro-transition-fast: 150ms ease;
+  --neuro-transition-normal: 250ms ease;
+  --neuro-transition-slow: 400ms ease-out;
+  
+  /* Spacing rhythm */
+  --neuro-space-scene: clamp(60px, 10vh, 100px);
+}
+
+@theme inline {
+  --color-background: var(--neuro-bg);
+  --color-foreground: var(--neuro-text-primary);
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--neuro-bg);
+  color: var(--neuro-text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar - minimal style */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--neuro-bg-warm);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neuro-line-medium);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neuro-line);
+}
+
+/* Utility classes for design language */
+.text-accent-amber {
+  color: var(--neuro-amber);
+}
+
+.text-accent-red {
+  color: var(--neuro-red);
+}
+
+.text-accent-green {
+  color: var(--neuro-green);
+}
+
+.bg-accent-amber {
+  background-color: var(--neuro-amber-bg);
+  color: var(--neuro-amber);
+}
+
+.bg-accent-red {
+  background-color: var(--neuro-red-bg);
+  color: var(--neuro-red);
+}
+
+.bg-accent-green {
+  background-color: var(--neuro-green-bg);
+  color: var(--neuro-green);
+}
+
+/* Card surface with depth */
+.card-surface {
+  background: var(--neuro-surface);
+  border: var(--neuro-border);
+  box-shadow: var(--neuro-shadow-sm);
+  transition: all var(--neuro-transition-normal);
+}
+
+.card-surface:hover {
+  box-shadow: var(--neuro-shadow-md);
+}
+
+/* Elevated surface for emphasis */
+.card-elevated {
+  background: var(--neuro-surface);
+  border: var(--neuro-border);
+  box-shadow: var(--neuro-shadow-lg);
+}
+
+/* Thin line dividers */
+.line-divider {
+  border-top: 1px solid var(--neuro-line-light);
+}
+
+.line-divider-dark {
+  border-top: 1px solid var(--neuro-line);
+}
+
+/* Animation keyframes for scroll-based storyboard */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    box-shadow: var(--neuro-shadow-md);
+  }
+  50% {
+    box-shadow: var(--neuro-shadow-lg);
+  }
+}
+
+@keyframes timeline-progress {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s var(--neuro-transition-slow) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s var(--neuro-transition-slow) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s var(--neuro-transition-slow) forwards;
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+/* Storyboard timeline connector - thin line */
+.timeline-connector {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--neuro-line-light);
+  transform: translateX(-50%);
+}
+
+/* Scene card hover effects */
+.scene-card {
+  transition: all var(--neuro-transition-normal);
+}
+
+.scene-card:hover {
+  transform: translateY(-2px);
+}
+
+/* Button styles */
+.btn-primary {
+  background: var(--neuro-text-primary);
+  color: var(--neuro-surface);
+  box-shadow: var(--neuro-shadow-sm);
+  transition: all var(--neuro-transition-normal);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--neuro-shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--neuro-text-primary);
+  border: 1px solid var(--neuro-line);
+  transition: all var(--neuro-transition-normal);
+}
+
+.btn-secondary:hover {
+  background: var(--neuro-bg-alt);
+}
